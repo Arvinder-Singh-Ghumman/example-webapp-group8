@@ -1,19 +1,18 @@
-# Use a base image
-FROM node:16
+# Base image
+FROM node:18-alpine
 
-# Set working directory
+# Create app directory
 WORKDIR /app
 
-# Copy package.json and install dependencies
+# Install app dependencies
 COPY package*.json ./
 RUN npm install
 
-# Copy the rest of the app
+# Bundle app source
 COPY . .
 
-# Expose a port (e.g., 3000)
+# Expose port
 EXPOSE 3000
 
-# Start the app
+# Run the app
 CMD ["npm", "start"]
-
